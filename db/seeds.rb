@@ -11,4 +11,6 @@
       user_id: user.id
     )
   end
+
+  user.likes.create(post_id: user.posts.take(1)[0].id)
 end
