@@ -1,24 +1,10 @@
-# README
+# Like-button app
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+In this repo, I will practice many-to-many relationship through building a like button.
 
-Things you may want to cover:
+## Model
 
-* Ruby version
+![](erd/erd.jpg)
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## References
+- [いいねボタンを作ろう](http://qiita.com/mohira/items/9ae35773e6209adbf0a0) by mohira
