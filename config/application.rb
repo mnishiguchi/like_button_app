@@ -14,10 +14,11 @@ module LikeButtonApp
 
     # http://guides.rubyonrails.org/generators.html
     config.generators do |g|
+      g.assets   = false
+      g.helpers  = false
+      g.jbuilder = false
+      g.template_engine :slim
       g.test_framework  nil
-      g.stylesheets     false
-      g.javascripts     false
-      g.helper          false
     end
   end
 end
