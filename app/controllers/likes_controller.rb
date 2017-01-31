@@ -1,21 +1,24 @@
 class LikesController < ApplicationController
+  before_action :authenticate_user! # Only a logged-in user can like posts.
 
   def create
     @post = Post.find(params[:post_id])
+    @post.likes.where(user_id: current_user.id).first_or_create!
 
-    @like = @post.likes.create!(user: current_user)
-
-    if @like
-      redirect_to @post
-    else
-      render 'post/show'
+    respond_to do |format|
+      format.html { redirect_to @post }
+      format.js
     end
   end
 
   def destroy
-    @like = Like.find_by(post_id: params[:post_id], user: current_user)
-    @like.destroy
-    redirect_to post_path(params[:post_id])
+    @post = Post.find(params[:post_id])
+    @post.likes.where(user_id: current_user.id).first_or_create!.destroy
+
+    respond_to do |format|
+      format.html { redirect_to @post }
+      format.js
+    end
   end
 
   private

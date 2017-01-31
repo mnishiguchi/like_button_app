@@ -28,7 +28,12 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  def already_liked?(post)
-    self.likes.exists?(post: post)
+  def likes?(post)
+    post.likes.where(user_id: id).any? # self.likes.exists?(post: post)
+  end
+
+  def gravatar_url
+    hash = Digest::MD5.hexdigest(email)
+    "http://www.gravatar.com/avatar/#{hash}"
   end
 end

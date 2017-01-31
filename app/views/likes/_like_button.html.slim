@@ -1,9 +1,11 @@
-- if current_user.already_liked?(@post)
-  = link_to 'Liked', post_like_path(@post), method: :delete, class: "button is-primary"
+-# Usage: render partial: "likes/like_button", locals: {post: @post}
+- if user_signed_in? && current_user.likes?(post)
+  = link_to fa_icon("heart"), post_like_path(post), method: :delete, remote: true, class: "button is-primary"
 - else
-  = form_for [@post, @like] do |f|
-    - if @like.errors.any?
-      - @like.errors.full_messages.each do |msg|
-        li[style="color: red;"]
-          = msg
-    = f.submit "Like", class: "button"
+  = link_to fa_icon("heart-o"), post_like_path(post), method: :post, remote: true, class: "button"
+br
+= post.likes.count
+br
+- post.liked_users.each do |user|
+  = link_to user do
+    = image_tag user.gravatar_url, width: 20

@@ -37,6 +37,7 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'devise'
 gem 'bulma-rails'
+gem "font-awesome-rails"
 gem 'slim-rails'
 
 group :development, :test do

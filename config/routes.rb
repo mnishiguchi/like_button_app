@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   end
 
   resources :posts, only: [:index, :show] do
-    resources :likes, only: [:create, :destroy]
+    resource :like, only: [:create, :destroy] # Only one like is allowed per post per user.
   end
 
   root 'posts#index'
